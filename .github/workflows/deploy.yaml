@@ -26,6 +26,7 @@ jobs:
           source_dir: ticket-cart-checker
           entry_point: main
           project_id: ${{ secrets.GCP_PROJECT_ID }}
+          version: 2
 
       # Example of using the output
       - id: 'test'
