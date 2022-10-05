@@ -1,15 +1,4 @@
 {
-  "name": "ticket-cart-checker",
-  "version": "1.0.0",
-  "description": "",
-  "main": "index.js",
-  "scripts": {
-    "start": "npx functions-framework --target=main",
-    "test": "echo \"Error: no test specified\" && exit 1"
-  },
-  "author": "",
-  "license": "ISC",
-  "devDependencies": {
-    "@google-cloud/functions-framework": "^3.1.2"
-  }
+  "name": "sample-http",
+  "version": "0.0.1"
 }
