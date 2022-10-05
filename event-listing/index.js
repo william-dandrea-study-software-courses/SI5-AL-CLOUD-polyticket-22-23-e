@@ -5,6 +5,6 @@
  * @param {!express:Response} res HTTP response context.
  */
 exports.main = (req, res) => {
-    let message = req.query.message || req.body.message || 'ticket-cart-checker';
+    let message = req.query.message || req.body.message || 'event-listing';
     res.status(200).send(message);
 };
