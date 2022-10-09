@@ -1,28 +1,28 @@
 const express = require('express');
-const { Client } = require("pg");
-
-
+const pg = require("pg");
 const app = express();
 app.use(express.json())
 
-
-const client = new Client({
-    user: "postgres",
-    host: "34.172.33.192",
-    database: "events",
-    password: "postgres",
+const pgConfig = {
+    user: 'postgres',
+    host: '34.172.33.192',
+    database: 'events',
+    password: 'postgres',
     port: 5432
-});
+};
+
+
+let pgPool;
+if (!pgPool) {
+    pgPool = new pg.Pool(pgConfig);
+}
 
 app.get('/all-events', async (req, res) => {
+    const selectedRows = await pgPool.query("SELECT * from events");
+    const rows = selectedRows.rows
 
-    const result = await client.query(`SELECT * FROM events`)
-        .then((payload) => {
-            return payload.rows;
-        })
-        .catch(error => res.status(400).json({"error": error.detail}))
-
-    res.status(200).json(result);
+    res.status(200).json(rows);
 })
 
 exports.main = app;
+
