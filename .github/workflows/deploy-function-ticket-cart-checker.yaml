@@ -1,4 +1,4 @@
-name: Deploy Cloud Function
+name: Deploy ticket-cart-checker Cloud Function
 on:
   push:
     branches: [ main ]

@@ -55,4 +55,11 @@ functions.http('main', (req, res) => {
 ```
 
 4. BIS : you can run in local the function with `npm start`
-5. 
+
+
+## Carnet de bord
+
+- 05 octobre 2022 : Création des différents projets (Faas, PaaS), connexion avec GCP
+pour le déploiement continu
+- 09 octobre 2022 : Connexion aux BDD (PostGreSQL & MongoDB) + implémentation des microservices
+- 

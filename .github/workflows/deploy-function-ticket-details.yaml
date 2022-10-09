@@ -1,4 +1,4 @@
-name: Deploy Cloud Function
+name: Deploy ticket-details Cloud Function
 on:
   push:
     branches: [ main ]

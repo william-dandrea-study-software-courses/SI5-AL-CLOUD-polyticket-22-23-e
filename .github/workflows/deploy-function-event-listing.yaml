@@ -1,4 +1,4 @@
-name: Deploy Cloud Function
+name: Deploy event-listing Cloud Function
 on:
   push:
     branches: [ main ]
