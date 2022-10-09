@@ -1,6 +1,5 @@
 require('dotenv').config()
 const express = require('express');
-const { Sequelize } = require('sequelize');
 
 
 const { Client } = require("pg");
@@ -11,6 +10,8 @@ const client = new Client({
   password: process.env.PASSWORD_DB,
   port: process.env.PORT_DB
 });
+
+
 const app = express();
 const port = process.env.PORT || 3500;
 app.use(express.json())
