@@ -36,11 +36,10 @@ app.get('/', (req, res) => {
 app.post('/new-event', async (req, res, next) => {
 
   const client = new Client({
-    user: process.env.USER_DB,
-    host: process.env.DATABASE_URL,
-    database: process.env.DATABASE_NAME,
-    password: process.env.PASSWORD_DB,
-    port: process.env.PORT_DB
+    user: 'postgres',
+    host: '/cloudsql/cloud-tickets:us-central1:event-db',
+    database: 'events',
+    password: 'postgres'
   });
 
   await client.connect();
@@ -79,7 +78,7 @@ app.post('/new-event', async (req, res, next) => {
 });
 
 
-app.get('/new-event', async (req, res, next) => {
+app.get('/events', async (req, res, next) => {
 
   const client = new Client({
     user: process.env.USER_DB,

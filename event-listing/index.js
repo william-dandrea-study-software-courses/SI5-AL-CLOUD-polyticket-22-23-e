@@ -10,10 +10,9 @@ app.get('/all-events', async (req, res) => {
 
         const pgConfig = {
             user: 'postgres',
-            host: '34.172.33.192',
+            host: '/cloudsql/cloud-tickets:us-central1:event-db',
             database: 'events',
-            password: 'postgres',
-            port: 5432
+            password: 'postgres'
         };
 
         const pgPool = new pg.Pool(pgConfig);
