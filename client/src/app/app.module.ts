@@ -11,13 +11,19 @@ import {MatMenuModule} from "@angular/material/menu";
 import {MatIconModule} from "@angular/material/icon";
 import { TicketsListComponent } from './feature/tickets/tickets-list/tickets-list.component';
 import { TicketCardComponent } from './feature/tickets/ticket-card/ticket-card.component';
+import { VideoManagerComponent } from './feature/video-manager/video-manager.component';
+import {VgBufferingModule} from "@videogular/ngx-videogular/buffering";
+import {VgOverlayPlayModule} from "@videogular/ngx-videogular/overlay-play";
+import {VgControlsModule} from "@videogular/ngx-videogular/controls";
+import {VgCoreModule} from "@videogular/ngx-videogular/core";
 
 @NgModule({
   declarations: [
     AppComponent,
     AppBarComponent,
     TicketsListComponent,
-    TicketCardComponent
+    TicketCardComponent,
+    VideoManagerComponent
   ],
   imports: [
     BrowserModule,
@@ -26,7 +32,11 @@ import { TicketCardComponent } from './feature/tickets/ticket-card/ticket-card.c
     MatToolbarModule,
     MatButtonModule,
     MatMenuModule,
-    MatIconModule
+    MatIconModule,
+    VgCoreModule,
+    VgControlsModule,
+    VgOverlayPlayModule,
+    VgBufferingModule,
   ],
   providers: [],
   bootstrap: [AppComponent]

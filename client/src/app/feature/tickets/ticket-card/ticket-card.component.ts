@@ -8,7 +8,7 @@ import {TicketModel} from "../../../core/models/ticket.model";
 })
 export class TicketCardComponent implements OnInit {
 
-  @Input() public ticket: TicketModel | null = null;
+  @Input() public ticket: any | null = null;
 
   constructor() { }
 
