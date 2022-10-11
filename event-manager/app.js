@@ -8,7 +8,8 @@ app.use(express.json())
 
 const client = new Client({
   user: 'postgres',
-  host: '/cloudsql/cloud-tickets:us-central1:event-db',
+  host: "34.172.33.192",
+  // host: '/cloudsql/cloud-tickets:us-central1:event-db',
   database: 'events',
   password: 'postgres'
 });
@@ -42,7 +43,7 @@ app.get('/', (req, res) => {
  */
 app.post('/new-event', async (req, res, next) => {
 
-  await client.connect();
+  await pool.connect();
 
   const nameBody = req.body["name"];
   const availableSeatsBody = req.body["available_seats"];
@@ -58,22 +59,22 @@ app.post('/new-event', async (req, res, next) => {
     `;
 
 
-    const result = await client.query(query).then(async payload => {
-      return await client
-          .query(`SELECT * FROM events`)
-          .then((payload2) => {
-            return payload2.rows;
-          }).catch(error => res.status(400).json({"error": error.detail}))
+    const result = await pool.query(query).then(async payload => {
+      return await pool
+        .query(`SELECT * FROM events`)
+        .then((payload2) => {
+          return payload2.rows;
+        }).catch(error => res.status(400).json({ "error": error.detail }))
     }).catch(error => {
-      res.status(400).json({"error": error.detail})
-    })
+      res.status(400).json({ "error": error.detail })
+    });
 
     if (result) {
       res.status(200).json(result)
     }
 
   } else {
-    res.json({status: "400", message: "Error when paring the request body"}).status(400)
+    res.json({ status: "400", message: "Error when paring the request body" }).status(400)
   }
 });
 
@@ -83,16 +84,35 @@ app.get('/events', async (req, res, next) => {
   await client.connect();
 
   const result = await client
-        .query(`SELECT * FROM events`)
-        .then((payload2) => {
-          return payload2.rows;
-        }).catch(error => res.status(400).json({"error": error.detail}))
-
+    .query(`SELECT * FROM events`)
+    .then((payload2) => {
+      return payload2.rows;
+    }).catch(error => res.status(400).json({ "error": error.detail }));
 
   if (result) {
     res.status(200).json(result)
   } else {
-    res.json({status: "400", message: "Error when paring the request body"}).status(400)
+    res.json({ status: "400", message: "Error when paring the request body" }).status(400)
+  }
+});
+
+app.get('/event/:eventId', async (req, res, next) => {
+  const eventId = req.params.eventId;
+
+  await client.connect();
+
+  const result = await client
+    .query(`SELECT * FROM events WHERE id_event = ${eventId}`)
+    .then((payload) => {
+      return payload.rows;
+    }).catch(error => {
+      res.status(400).json({ "error": error.detail });
+    });
+
+  if (result) {
+    res.status(200).json(result)
+  } else {
+    res.json({ status: "400", message: "Error when paring the request body" }).status(400)
   }
 });
 

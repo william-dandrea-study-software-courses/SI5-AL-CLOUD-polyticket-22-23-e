@@ -13,6 +13,7 @@
     "express": "~4.16.1",
     "http-errors": "~1.6.3",
     "mongodb": "^4.10.0",
+    "node-fetch": "^3.2.10",
     "pg": "^8.8.0",
     "pg-hstore": "^2.3.4",
     "uuid": "^9.0.0"
