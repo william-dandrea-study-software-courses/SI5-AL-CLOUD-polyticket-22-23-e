@@ -6,13 +6,6 @@ const { Client } = require("pg");
 
 app.use(express.json())
 
-const client = new Client({
-  user: 'postgres',
-  host: '/cloudsql/cloud-tickets:us-central1:event-db',
-  database: 'events',
-  password: 'postgres'
-});
-
 app.get('/', (req, res) => {
   res.send('Hello World!')
 })
@@ -41,6 +34,13 @@ app.get('/', (req, res) => {
  *
  */
 app.post('/new-event', async (req, res, next) => {
+
+  const client = new Client({
+    user: 'postgres',
+    host: '/cloudsql/cloud-tickets:us-central1:event-db',
+    database: 'events',
+    password: 'postgres'
+  });
 
   await client.connect();
 
@@ -79,6 +79,13 @@ app.post('/new-event', async (req, res, next) => {
 
 
 app.get('/events', async (req, res, next) => {
+
+  const client = new Client({
+    user: 'postgres',
+    host: '/cloudsql/cloud-tickets:us-central1:event-db',
+    database: 'events',
+    password: 'postgres'
+  });
 
   await client.connect();
 
