@@ -32,8 +32,6 @@ app.get('/', (req, res) => {
 })
 
 app.post('/new-ticket', async (req, res) => {
-
-
   const ticketItem = {
     id_cart: uuidv4(),
     expirationDate: dateWithIncrement(5),
