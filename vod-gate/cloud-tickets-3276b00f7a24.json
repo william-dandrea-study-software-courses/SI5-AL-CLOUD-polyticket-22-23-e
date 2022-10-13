@@ -1,0 +1,12 @@
+{
+  "type": "service_account",
+  "project_id": "cloud-tickets",
+  "private_key_id": "3276b00f7a2499d295b31d70a295fa3cc0232461",
+  "private_key": "-----BEGIN PRIVATE KEY-----\nMIIEvQIBADANBgkqhkiG9w0BAQEFAASCBKcwggSjAgEAAoIBAQCWHt0z7jaHBiCr\n6eA/a1v9tE2w0cyUURaBOV6PjmNMOcp1GLuX/wlpTL9tUAPlAsF2xEUjhUOjyNSp\nyDQclUWd4sAipX4JTFEy5+TCb5f0QgPar5E9fK2go4TcY2y5FBr/SUxAh/oIXYcg\nsvNqyTQxXb1j+tscL3M1BhBrzLDdMCAAbYgQrs6ttbHeeD6Atuc2mvO162T23Lqn\nQavbDzq2D9JqhVC2/LQwf/3fKHcE37Jb50DyHN4zEM5HZZY4NGD7lPlBHat/V2gF\nkWvmA84PisD81VrlTAHzp65hF6ttsd76jW3TATbWOXk/iP6afq42V1+GK5Gig3wm\nubeLq6ETAgMBAAECggEAROjzCmkBX7bI3ZFUjlgWWJ3hAdc0bSrRxUzT4truKunm\nTR0m061PISaJQsD1oLTEoOOUhysfsvm34R3VCf/dfo29O8oy0krVhSQchsJaAtYg\n1cw8w/hM7U3SaaY8HLMld2Uqmv6wIBHquvBaO30Tt8t7af8XgFcpr7/SXuGNmGJQ\nT1PXUQPat6DX5J7H6h6/VY4AYxHkiBURNiRX2rDsXeFk6BimYooJFmRnvETjTiw9\n0W4V+nHbJu2bs834DsAHH2JK2C7Im0nxn1RmcWGxPtlk9E472JfN1NeiXgqde8OD\nZtWMecW2p8fGIerjXGuB276mgzlpcMiylj6Bl53ZKQKBgQDM3ieJwKgLW7LHJ17s\nr3bWbtDE00OfZSSGKd3G9lht35Y8BJwhdvsyQ2nMt4MGZPqzqYIIeoAjeYdHrSU5\nJ22tJZhHoKnwnN6ZPYsK8bpaHRzQfILe46Y0w60YhjsqlnVLBUjuvAMp85HiOKY6\nPv1KhH5wmAr2zQMIyXpoL5CkqwKBgQC7lq8iFYnEW9KPg21Fb8rJNRxBQ/6uD8A3\n9+2975qjEMsprLXuXdmTLheKKg/bUWsLEG2Fw61X+fP540NDIoBE6um8lmAkgXuW\nPsOcFdxPtDxJjqnivZpt07neImbwIp6PlvSfS804+3/JbHTwavOZbChVrCguZwLl\naTpkj37lOQKBgFVTseQN+e/BIZURMNgjvLtTLGDOHTwmRDAc/+H+eJZKqagVw3Gs\nvLMSoN5DEK95H3H1B9PAMd6Un2ObGgXUBjo3jlVG9YDh1VS97UuBorwlo/qx4VA0\nQOV5Gn88aSgzwmacrOPCKw8uA3TVY2afFaATzxXWPbrNaJYgVHtQVE5BAoGBAJY5\nRskR3ID+U7IQOvqnWwsk2BrAG/1CqdloV+CKOBksQrZ+FDfuumWuPLWtl4M4QXPb\n1QmROYlBpwtP3zatM3F9em9HMXkqpFEetEGUFBlUKg9yC0SEOF6JdsiYXj0iTD6L\nUh0bdB6U8bHZhBBgZfJQdkCdnJQEdIJJcbTEYYepAoGAAqrORgZe3UjAllAGXvM4\n6qPDOkYezGuo/x66vvkoK/LfRSA4M8s4sSQX68Fq2RY9RbIY1foYOF4BIPjfDeFz\nF313yWyvtY/QSRq+6uj8ZANsQ4WgZ3No/K/ZKFxGbYMXeYUaJl/2zGKO5ILIe6jR\nuFovjFb+47tdmc/UQdFUF0I=\n-----END PRIVATE KEY-----\n",
+  "client_email": "video-manager@cloud-tickets.iam.gserviceaccount.com",
+  "client_id": "103538288670068148507",
+  "auth_uri": "https://accounts.google.com/o/oauth2/auth",
+  "token_uri": "https://oauth2.googleapis.com/token",
+  "auth_provider_x509_cert_url": "https://www.googleapis.com/oauth2/v1/certs",
+  "client_x509_cert_url": "https://www.googleapis.com/robot/v1/metadata/x509/video-manager%40cloud-tickets.iam.gserviceaccount.com"
+}
