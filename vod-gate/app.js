@@ -1,7 +1,10 @@
 require('dotenv').config();
 const express = require('express')
-const app = express()
+const app = express();
+const cors = require('cors');
+
 const port = process.env.PORT || 8080;
+app.use(cors());
 
 const Multer = require('multer');
 const gcsMiddlewares = require("./middlewares/google-cloud-storage");

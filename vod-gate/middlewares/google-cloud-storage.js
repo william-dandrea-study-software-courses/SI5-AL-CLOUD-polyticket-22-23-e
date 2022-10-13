@@ -35,13 +35,6 @@ exports.sendUploadToGCS = (req, res, next) => {
     stream.on('finish', () => {
         req.file.cloudStorageObject = gcsHelpers.getPublicUrl(gcsFileName);
         next()
-
-        /*
-        return file.makePublic()
-            .then(() => {
-                req.file.gcsUrl = gcsHelpers.getPublicUrl(bucketName, gcsFileName);
-                next();
-            }); */
     });
 
     stream.end(req.file.buffer);
