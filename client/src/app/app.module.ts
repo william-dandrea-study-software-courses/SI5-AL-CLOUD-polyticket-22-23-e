@@ -16,6 +16,7 @@ import {VgBufferingModule} from "@videogular/ngx-videogular/buffering";
 import {VgOverlayPlayModule} from "@videogular/ngx-videogular/overlay-play";
 import {VgControlsModule} from "@videogular/ngx-videogular/controls";
 import {VgCoreModule} from "@videogular/ngx-videogular/core";
+import {HttpClientModule} from "@angular/common/http";
 
 @NgModule({
   declarations: [
@@ -27,6 +28,7 @@ import {VgCoreModule} from "@videogular/ngx-videogular/core";
   ],
   imports: [
     BrowserModule,
+    HttpClientModule,
     AppRoutingModule,
     BrowserAnimationsModule,
     MatToolbarModule,

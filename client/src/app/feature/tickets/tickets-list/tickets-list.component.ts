@@ -1,5 +1,6 @@
 import { Component, OnInit } from '@angular/core';
 import {TicketModel} from "../../../core/models/ticket.model";
+import {TicketListingService} from "../../../core/service/ticket-listing.service";
 
 @Component({
   selector: 'app-tickets-list',
@@ -8,41 +9,15 @@ import {TicketModel} from "../../../core/models/ticket.model";
 })
 export class TicketsListComponent implements OnInit {
 
-  public tickets: TicketModel[] = [
-    {
-      id: 0,
-      title: "Concert de Jean Duvoyage",
-      regular_tickets_available: 30,
-    },
-    {
-      id: 1,
-      title: "Event de Jean Delacouette",
-      regular_tickets_available: 30,
-    },
-    {
-      id: 2,
-      title: "Meetup de Alexandra Lacroute",
-      regular_tickets_available: 30,
-    },
-    {
-      id: 3,
-      title: "Journal de Claire Chabal",
-      regular_tickets_available: 30,
-    },
-    {
-      id: 4,
-      title: "Match de Zinedine Tzigane",
-      regular_tickets_available: 30,
-    },
-    {
-      id: 5,
-      title: "Episode de Mimi Maxi",
-      regular_tickets_available: 30,
-    },
-  ]
+  public tickets: TicketModel[] = []
 
-  constructor() { }
+  constructor(private ticketListingService: TicketListingService) {}
 
-  ngOnInit(): void {}
+  ngOnInit(): void {
+    this.ticketListingService.getAllTickets().subscribe(tickets => {
+      console.log(tickets)
+      this.tickets = tickets;
+    })
+  }
 
 }

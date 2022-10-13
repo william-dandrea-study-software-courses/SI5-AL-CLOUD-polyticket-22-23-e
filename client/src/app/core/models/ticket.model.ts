@@ -1,7 +1,10 @@
 
 
 export interface TicketModel {
-  id: number;
-  title: string;
-  regular_tickets_available: number;
+  id_event: number,
+  name_event: string,
+  email_owner: string,
+  date_event: Date,
+  available_seats: number,
+  artist: string
 }

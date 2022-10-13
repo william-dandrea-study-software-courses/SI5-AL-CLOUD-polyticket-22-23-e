@@ -8,11 +8,12 @@ import {TicketModel} from "../../../core/models/ticket.model";
 })
 export class TicketCardComponent implements OnInit {
 
-  @Input() public ticket: any | null = null;
+  @Input() public ticketV: TicketModel | null = null;
 
   constructor() { }
 
   ngOnInit(): void {
+    console.log(this.ticketV)
   }
 
 }
