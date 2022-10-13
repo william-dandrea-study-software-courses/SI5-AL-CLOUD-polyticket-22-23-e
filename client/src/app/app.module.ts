@@ -17,6 +17,7 @@ import {VgOverlayPlayModule} from "@videogular/ngx-videogular/overlay-play";
 import {VgControlsModule} from "@videogular/ngx-videogular/controls";
 import {VgCoreModule} from "@videogular/ngx-videogular/core";
 import {HttpClientModule} from "@angular/common/http";
+import { UploadVideoComponent } from './feature/upload-video/upload-video.component';
 
 @NgModule({
   declarations: [
@@ -24,7 +25,8 @@ import {HttpClientModule} from "@angular/common/http";
     AppBarComponent,
     TicketsListComponent,
     TicketCardComponent,
-    VideoManagerComponent
+    VideoManagerComponent,
+    UploadVideoComponent
   ],
   imports: [
     BrowserModule,

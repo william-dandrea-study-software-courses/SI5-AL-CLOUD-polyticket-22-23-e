@@ -24,8 +24,6 @@ app.post('/upload', multer.single('file'), gcsMiddlewares.sendUploadToGCS, (req,
   } else {
     res.status(500).send('Unable to upload');
   }
-
-
 });
 
 

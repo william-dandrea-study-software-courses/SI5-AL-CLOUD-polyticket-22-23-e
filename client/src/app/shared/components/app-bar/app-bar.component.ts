@@ -20,4 +20,8 @@ export class AppBarComponent implements OnInit {
   goToMainPage() {
     this.router.navigate([""])
   }
+
+  goToUploadVideoPage() {
+    this.router.navigate(["upload-video"])
+  }
 }
