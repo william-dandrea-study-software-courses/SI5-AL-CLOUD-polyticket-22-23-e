@@ -18,7 +18,6 @@ const SQLClientConfig = {
     password: 'postgres'
 };
 
-
 app.get('/:idTicket', async (req, res) => {
     const idTicket = req.params.idTicket;
 
