@@ -68,8 +68,11 @@ export class TicketCardComponent implements OnInit {
   public buyTicket() {
     if (this.event) {
       this.ticketService.buyNewTicket(this.event.id_event).subscribe(v => {
+        console.log(v)
         const cart: CartModel | null = isCartModelInstance(v);
         const error: ErrorModel | null = isErrorModelInstance(v);
+
+        console.log(cart, error)
 
         if (cart) {
           let dialogRef = this.dialog.open(DialogNewTicketInCartComponent);
