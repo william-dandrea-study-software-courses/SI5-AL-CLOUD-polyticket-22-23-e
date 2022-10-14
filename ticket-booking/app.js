@@ -9,7 +9,7 @@ const {dateWithIncrement} = require("./utils");
 const { Client } = require("pg");
 
 const app = express()
-const port = process.env.PORT || 8080;
+const port = process.env.PORT || 8090;
 
 app.use(express.json())
 

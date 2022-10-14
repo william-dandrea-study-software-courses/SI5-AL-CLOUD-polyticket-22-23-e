@@ -67,10 +67,6 @@ app.post('/upload/:idEvent', multer.single('file'), gcsMiddlewares.sendUploadToG
     } else {
       res.send({status: "Error when updating the event database"}).status(500);
     }
-
-    console.log(infosEvent)
-
-    res.send(infosEvent).status(200);
   } else {
     res.send('Unable to upload').status(500);
   }
