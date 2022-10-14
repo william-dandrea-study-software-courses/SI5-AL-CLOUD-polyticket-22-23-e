@@ -18,6 +18,10 @@ import {VgControlsModule} from "@videogular/ngx-videogular/controls";
 import {VgCoreModule} from "@videogular/ngx-videogular/core";
 import {HttpClientModule} from "@angular/common/http";
 import { UploadVideoComponent } from './feature/upload-video/upload-video.component';
+import { DialogWithOkButtonComponent } from './shared/components/dialog/dialog-with-ok-button/dialog-with-ok-button.component';
+import {MatDialogModule} from "@angular/material/dialog";
+import {MatSnackBar, MatSnackBarModule} from "@angular/material/snack-bar";
+import { DialogNewTicketInCartComponent } from './shared/components/dialog/dialog-new-ticket-in-cart/dialog-new-ticket-in-cart.component';
 
 @NgModule({
   declarations: [
@@ -26,7 +30,9 @@ import { UploadVideoComponent } from './feature/upload-video/upload-video.compon
     TicketsListComponent,
     TicketCardComponent,
     VideoManagerComponent,
-    UploadVideoComponent
+    UploadVideoComponent,
+    DialogWithOkButtonComponent,
+    DialogNewTicketInCartComponent
   ],
   imports: [
     BrowserModule,
@@ -37,6 +43,8 @@ import { UploadVideoComponent } from './feature/upload-video/upload-video.compon
     MatButtonModule,
     MatMenuModule,
     MatIconModule,
+    MatDialogModule,
+    MatSnackBarModule,
     VgCoreModule,
     VgControlsModule,
     VgOverlayPlayModule,

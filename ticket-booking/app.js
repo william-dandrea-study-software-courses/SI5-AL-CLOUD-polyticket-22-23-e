@@ -25,6 +25,62 @@ const SQLClientConfig = {
 };
 
 
+const createNewOfficialTicket = async (req, res, cartId, eventId) => {
+  // Delete the temporary cart
+
+  const deletingTicketPromise = new Promise(async (resolve) => {
+    await mongoClient.connect(async () => {
+      const collection = await mongoClient.db("cart-tickets").collection("cart-tickets");
+      const deletingResult = await collection.deleteOne({id_cart: String(cartId)})
+      await mongoClient.close();
+      resolve(deletingResult)
+    });
+  });
+
+
+  deletingTicketPromise.then(async deletingResult => {
+    if (deletingResult.acknowledged === true) {
+
+      // We decrease the available seats
+      const SQLClient = new Client(SQLClientConfig);
+      await SQLClient.connect();
+      const query = `UPDATE public.events SET available_seats = available_seats - 1 WHERE id_event=${eventId};`;
+      await SQLClient.query(query).then(async payload => {
+        return payload.rows;
+      }).catch(() => {
+        return null;
+      });
+
+
+
+      // Now we create a new official ticket
+      const officialTicketItem = {
+        buy_date: (new Date()).toISOString(),
+        event_id: Number(eventId),
+        type: "OFFICIAL"
+      }
+
+      const newTicketPromise = new Promise(async (resolve) => {
+        await mongoClient.connect(async err => {
+          const collection = await mongoClient.db("tickets").collection("tickets");
+          const newTemporaryTicketStatus = await collection.insertOne(officialTicketItem)
+          await mongoClient.close();
+          resolve(newTemporaryTicketStatus)
+        });
+      })
+
+      newTicketPromise.then(newTicket => {
+        if (newTicket.acknowledged === true) {
+          res.status(200).send(officialTicketItem)
+        } else {
+          res.status(500).send({status: 'Cannot write the new ticket in the DB'})
+        }
+      })
+    } else {
+      res.status(500).send(`Error when deleting the temporary cart id ${cartId}`);
+    }
+  })
+}
 
 
 app.get('/', (req, res) => {
@@ -33,36 +89,7 @@ app.get('/', (req, res) => {
 
 
 
-app.post('/create-eticket/:eventId', async (req, res, next) => {
-
-  const eventId = req.params.eventId;
-
-  // Now we create a new official ticket
-  const officialETicketItem = {
-    buy_date: (new Date()).toISOString(),
-    event_id: Number(eventId),
-    type: "ETICKET"
-  }
-
-  const newTicketPromise = new Promise(async (resolve) => {
-    await mongoClient.connect(async err => {
-      const collection = await mongoClient.db("tickets").collection("tickets");
-      const newTemporaryTicketStatus = await collection.insertOne(officialETicketItem)
-      await mongoClient.close();
-      resolve(newTemporaryTicketStatus)
-    });
-  })
-
-  newTicketPromise.then(newTicket => {
-    if (newTicket.acknowledged === true) {
-      res.status(200).send(officialETicketItem)
-    } else {
-      res.status(500).send({status: 'Cannot write the new ticket in the DB'})
-    }
-  })
-});
-
-app.post('/create-ticket/:eventId', async (req, res, next) => {
+app.get('/create-ticket/:eventId', async (req, res, next) => {
   const eventId = req.params.eventId;
   // const my_event = await getEventById(req.params.eventId);
 
@@ -136,7 +163,7 @@ app.post('/create-ticket/:eventId', async (req, res, next) => {
 });
 
 
-app.post('/:cart_id/pay', async (req, res) => {
+app.get('/:cart_id/pay', async (req, res) => {
   const cartId = req.params.cart_id;
   console.log(cartId)
 
@@ -188,6 +215,34 @@ app.post('/:cart_id/pay', async (req, res) => {
 });
 
 
+app.get('/create-eticket/:eventId', async (req, res) => {
+
+  const eventId = req.params.eventId;
+
+  // Now we create a new official ticket
+  const officialETicketItem = {
+    buy_date: (new Date()).toISOString(),
+    event_id: Number(eventId),
+    type: "ETICKET"
+  }
+
+  const newTicketPromise = new Promise(async (resolve) => {
+    await mongoClient.connect(async err => {
+      const collection = await mongoClient.db("tickets").collection("tickets");
+      const newTemporaryTicketStatus = await collection.insertOne(officialETicketItem)
+      await mongoClient.close();
+      resolve(newTemporaryTicketStatus)
+    });
+  })
+
+  newTicketPromise.then(newTicket => {
+    if (newTicket.acknowledged === true) {
+      res.status(200).send(officialETicketItem)
+    } else {
+      res.status(500).send({status: 'Cannot write the new ticket in the DB'})
+    }
+  })
+});
 
 
 
@@ -197,59 +252,4 @@ app.listen(port, () => {
 });
 
 
-const createNewOfficialTicket = async (req, res, cartId, eventId) => {
-  // Delete the temporary cart
 
-  const deletingTicketPromise = new Promise(async (resolve) => {
-    await mongoClient.connect(async () => {
-      const collection = await mongoClient.db("cart-tickets").collection("cart-tickets");
-      const deletingResult = await collection.deleteOne({id_cart: String(cartId)})
-      await mongoClient.close();
-      resolve(deletingResult)
-    });
-  });
-
-
-  deletingTicketPromise.then(async deletingResult => {
-    if (deletingResult.acknowledged === true) {
-
-      // We decrease the available seats
-      const SQLClient = new Client(SQLClientConfig);
-      await SQLClient.connect();
-      const query = `UPDATE public.events SET available_seats = available_seats - 1 WHERE id_event=${eventId};`;
-      await SQLClient.query(query).then(async payload => {
-        return payload.rows;
-      }).catch(() => {
-        return null;
-      });
-
-
-
-      // Now we create a new official ticket
-      const officialTicketItem = {
-        buy_date: (new Date()).toISOString(),
-        event_id: Number(eventId),
-        type: "OFFICIAL"
-      }
-
-      const newTicketPromise = new Promise(async (resolve) => {
-        await mongoClient.connect(async err => {
-          const collection = await mongoClient.db("tickets").collection("tickets");
-          const newTemporaryTicketStatus = await collection.insertOne(officialTicketItem)
-          await mongoClient.close();
-          resolve(newTemporaryTicketStatus)
-        });
-      })
-
-      newTicketPromise.then(newTicket => {
-        if (newTicket.acknowledged === true) {
-          res.status(200).send(officialTicketItem)
-        } else {
-          res.status(500).send({status: 'Cannot write the new ticket in the DB'})
-        }
-      })
-    } else {
-      res.status(500).send(`Error when deleting the temporary cart id ${cartId}`);
-    }
-  })
-}
