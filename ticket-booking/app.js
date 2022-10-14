@@ -7,11 +7,13 @@ const { v4: uuidv4 } = require('uuid');
 const { MongoClient, ServerApiVersion } = require('mongodb');
 const {dateWithIncrement} = require("./utils");
 const { Client } = require("pg");
+const cors = require('cors');
 
 const app = express()
 const port = process.env.PORT || 8090;
 
-app.use(express.json())
+app.use(express.json());
+app.use(cors());
 
 const mongoDBUri = "mongodb+srv://admin:admin@cloud-ticket.874mo1m.mongodb.net/?retryWrites=true&w=majority";
 const mongoClient = new MongoClient(mongoDBUri, { useNewUrlParser: true,  useUnifiedTopology: true,  serverApi: ServerApiVersion.v1});

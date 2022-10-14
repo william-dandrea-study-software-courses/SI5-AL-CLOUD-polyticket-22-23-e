@@ -1,6 +1,6 @@
 import { Component, OnInit } from '@angular/core';
-import {TicketModel} from "../../../core/models/ticket.model";
-import {TicketListingService} from "../../../core/service/ticket-listing.service";
+import {EventModel} from "../../../core/models/event.model";
+import {EventListingService} from "../../../core/service/event-listing.service";
 
 @Component({
   selector: 'app-tickets-list',
@@ -9,14 +9,14 @@ import {TicketListingService} from "../../../core/service/ticket-listing.service
 })
 export class TicketsListComponent implements OnInit {
 
-  public tickets: TicketModel[] = []
+  public events: EventModel[] = []
 
-  constructor(private ticketListingService: TicketListingService) {}
+  constructor(private eventListingService: EventListingService) {}
 
   ngOnInit(): void {
-    this.ticketListingService.getAllTickets().subscribe(tickets => {
-      console.log(tickets)
-      this.tickets = tickets;
+    this.eventListingService.getAllTickets().subscribe(events => {
+      console.log(events)
+      this.events = events;
     })
   }
 

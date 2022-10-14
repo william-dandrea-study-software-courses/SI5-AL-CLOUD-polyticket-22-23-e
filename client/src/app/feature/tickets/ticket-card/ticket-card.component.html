@@ -1,24 +1,27 @@
 
 
-<div class="ticket-card" *ngIf="ticketV != null">
+<div class="ticket-card" *ngIf="event != null">
 
 
   <div id="title-ticket-card">
-    <h2>{{ticketV.name_event}}</h2>
+    <h2>{{event.name_event}}</h2>
+
+    From <b>{{ event.artist }}</b> the <b>{{ dateEvent() }}</b>
+
   </div>
 
   <div id="booking-ticket-card">
 
 
     <div class="booking-button-ticket-card">
-      <button mat-raised-button color="accent">Buy e-ticket</button>
+      <button mat-raised-button color="accent" (click)="buyEticket()">Buy e-ticket</button>
     </div>
 
-    <div class="booking-button-ticket-card">
+    <div class="booking-button-ticket-card" (click)="buyTicket()">
       <button mat-raised-button color="primary">
         Buy ticket
       </button>
-      (Only 5 tickets left)
+      (Only {{ event.available_seats }} tickets left)
 
     </div>
 
