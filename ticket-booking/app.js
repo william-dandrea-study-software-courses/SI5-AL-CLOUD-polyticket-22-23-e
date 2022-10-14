@@ -60,12 +60,8 @@ app.post('/create-eticket/:eventId', async (req, res, next) => {
   })
 });
 
-
-
 app.post('/create-ticket/:eventId', async (req, res, next) => {
   const eventId = req.params.eventId;
-
-
   // const my_event = await getEventById(req.params.eventId);
 
   // Watch if enough places for this event
