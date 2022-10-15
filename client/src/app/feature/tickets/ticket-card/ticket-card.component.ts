@@ -12,6 +12,7 @@ import {CartModel, isCartModelInstance} from "../../../core/models/cart.model";
 import {
   DialogNewTicketInCartComponent
 } from "../../../shared/components/dialog/dialog-new-ticket-in-cart/dialog-new-ticket-in-cart.component";
+import {CartService} from "../../../core/service/cart.service";
 
 @Component({
   selector: 'app-ticket-card',
@@ -22,7 +23,7 @@ export class TicketCardComponent implements OnInit {
 
   @Input() public event: EventModel | null = null;
 
-  constructor(private ticketService: TicketService, public dialog: MatDialog, private snackBar: MatSnackBar) { }
+  constructor(private ticketService: TicketService, public dialog: MatDialog, private snackBar: MatSnackBar, private cartService: CartService) { }
 
   ngOnInit(): void {
     console.log(this.event)
@@ -47,6 +48,7 @@ export class TicketCardComponent implements OnInit {
         if (ticket) {
           let dialogRef = this.dialog.open(DialogWithOkButtonComponent);
           dialogRef.componentInstance.ticket = ticket;
+
         }
 
         if (error) {
@@ -75,6 +77,7 @@ export class TicketCardComponent implements OnInit {
         console.log(cart, error)
 
         if (cart) {
+          this.cartService.addToCart(cart);
           let dialogRef = this.dialog.open(DialogNewTicketInCartComponent);
           dialogRef.componentInstance.cart = cart;
         }

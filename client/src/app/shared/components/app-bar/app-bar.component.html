@@ -26,9 +26,20 @@
       Your cart is available for 4:49 minutes
     </button>
 
-    <button mat-icon-button>
+    <button mat-icon-button [matMenuTriggerFor]="cartMenu">
       <mat-icon>shopping_cart</mat-icon>
     </button>
+
+    <mat-menu #cartMenu>
+      <menu mat-menu-item *ngFor="let cart of cartElements">
+        <mat-icon (click)="payTicket(cart.id_cart)">payment</mat-icon>
+        {{cart.id_cart}}
+      </menu>
+
+      <menu mat-menu-item *ngIf="cartElements.length === 0">
+        Your cart is empty
+      </menu>
+    </mat-menu>
 
 
 
