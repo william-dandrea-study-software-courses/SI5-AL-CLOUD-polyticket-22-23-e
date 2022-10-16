@@ -15,9 +15,14 @@ export class EventService {
     return this.http.post<EventModel | ErrorModel>(`https://event-manager-idnoihwhaq-uc.a.run.app/new-event`, {
       name: nameInput,
       available_seats: availableSeatsInput,
-      date: dateInput,
+      date: dateInput.toISOString(),
       artist: artistInput,
       creator_email: creatorEmailInput,
     })
+  }
+
+
+  public addVideoToEvent() {
+
   }
 }

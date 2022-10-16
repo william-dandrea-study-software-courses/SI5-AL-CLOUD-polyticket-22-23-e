@@ -87,25 +87,29 @@ app.post('/new-event', async (req, res, next) => {
   }
 });
 
-
-app.get('/events', async (req, res, next) => {
-
+app.get('/event/:eventId', async (req, res) => {
+  const eventId = req.params.eventId;
 
   const SQLClient = new Client(SQLClientConfig);
   await SQLClient.connect();
   const result = await SQLClient
-        .query(`SELECT * FROM events`)
-        .then((payload2) => {
-          return payload2.rows;
-        }).catch(error => res.status(400).json({"error": error.detail}))
-
+      .query(`SELECT * FROM events WHERE id_event=${eventId}`)
+      .then((payload2) => {
+        if (payload2.rows.length > 0) {
+          return payload2.rows[0];
+        } else {
+          return null;
+        }
+      }).catch(error => res.status(400).json({"error": error.detail}))
 
   if (result) {
     res.status(200).json(result)
   } else {
     res.json({status: "400", message: "Error when paring the request body"}).status(400)
   }
-});
+})
+
+
 
 app.listen(port, () => {
   console.log(`Example app listening on port ${port}`)

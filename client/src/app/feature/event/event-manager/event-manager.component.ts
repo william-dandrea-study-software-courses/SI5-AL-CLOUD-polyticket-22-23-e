@@ -38,6 +38,9 @@ export class EventManagerComponent implements OnInit {
 
   public searchTicketWithId() {
     console.log(this.editEventIdForm.value)
+
+
+
   }
 
   public addEvent() {
