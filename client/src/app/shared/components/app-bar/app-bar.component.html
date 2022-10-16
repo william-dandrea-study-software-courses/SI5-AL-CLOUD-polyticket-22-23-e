@@ -1,10 +1,10 @@
 <header>
   <mat-toolbar color="primary">
 
-    <span>PolyTickets</span>
+    <span (click)="goToMainPage()">PolyTickets</span>
 
-    <button mat-button (click)="goToMainPage()">
-      Available events
+    <button mat-button (click)="goToTicketDetails()" >
+      Ticket details
     </button>
 
 
@@ -23,7 +23,7 @@
     <span class="spacer-header"></span>
 
     <button mat-button>
-      Your cart is available for 4:49 minutes
+
     </button>
 
     <button mat-icon-button [matMenuTriggerFor]="cartMenu">

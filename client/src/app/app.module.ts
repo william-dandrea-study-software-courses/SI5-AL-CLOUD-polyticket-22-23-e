@@ -22,6 +22,11 @@ import { DialogWithOkButtonComponent } from './shared/components/dialog/dialog-w
 import {MatDialogModule} from "@angular/material/dialog";
 import {MatSnackBar, MatSnackBarModule} from "@angular/material/snack-bar";
 import { DialogNewTicketInCartComponent } from './shared/components/dialog/dialog-new-ticket-in-cart/dialog-new-ticket-in-cart.component';
+import { TicketDetailComponent } from './feature/tickets/ticket-detail/ticket-detail.component';
+import {MatFormFieldModule} from "@angular/material/form-field";
+import {ReactiveFormsModule} from "@angular/forms";
+import {MatInputModule} from "@angular/material/input";
+import {MatProgressSpinnerModule} from "@angular/material/progress-spinner";
 
 @NgModule({
   declarations: [
@@ -32,7 +37,8 @@ import { DialogNewTicketInCartComponent } from './shared/components/dialog/dialo
     VideoManagerComponent,
     UploadVideoComponent,
     DialogWithOkButtonComponent,
-    DialogNewTicketInCartComponent
+    DialogNewTicketInCartComponent,
+    TicketDetailComponent
   ],
   imports: [
     BrowserModule,
@@ -49,6 +55,10 @@ import { DialogNewTicketInCartComponent } from './shared/components/dialog/dialo
     VgControlsModule,
     VgOverlayPlayModule,
     VgBufferingModule,
+    MatFormFieldModule,
+    ReactiveFormsModule,
+    MatInputModule,
+    MatProgressSpinnerModule,
   ],
   providers: [],
   bootstrap: [AppComponent]

@@ -54,6 +54,8 @@ export class AppBarComponent implements OnInit {
       if (error) {
         console.log(error)
         this.snackBar.open(`Error : ${error.status}`)
+
+
       }
     }, error => {
       console.log(error)
@@ -62,8 +64,9 @@ export class AppBarComponent implements OnInit {
         this.snackBar.open(`Error : ${error.status}`)
       }
     })
+  }
 
-
-
+  goToTicketDetails() {
+    this.router.navigate(["ticket-detail"])
   }
 }

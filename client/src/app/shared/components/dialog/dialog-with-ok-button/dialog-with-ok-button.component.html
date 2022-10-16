@@ -1,6 +1,7 @@
 
 <div *ngIf="ticket != null">
-  <h1>Gracias Amigo, you bought a new e-ticket</h1>
+  <h1 *ngIf="ticket.type === 'ETICKET'">Gracias Amigo, you bought a new e-ticket</h1>
+  <h1 *ngIf="ticket.type === 'OFFICIAL'">Gracias Amigo, you bought a new ticket</h1>
 
 
   <h3>Ticket details</h3>

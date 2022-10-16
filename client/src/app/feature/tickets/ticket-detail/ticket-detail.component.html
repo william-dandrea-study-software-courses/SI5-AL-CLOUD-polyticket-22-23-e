@@ -1,0 +1,39 @@
+
+<section style="margin: 50px">
+
+  634c3594fa69040a32e7d9a5
+
+  <form [formGroup]="form">
+    <div >
+      <mat-form-field appearance="fill">
+        <mat-label>Id event</mat-label>
+        <input type="text" matInput formControlName="id_event">
+      </mat-form-field>
+    </div>
+
+    <button mat-raised-button color="primary" class="full-width" (click)="valididate()" [disabled]="form.invalid">Search</button>
+  </form>
+
+
+  <div style="height: 20px"></div>
+
+  <mat-spinner *ngIf="isLoading"></mat-spinner>
+
+  <div *ngIf="ticketDetail">
+
+    <h2>Event infos</h2>
+    Event ID : {{ticketDetail.infosEvent.id_event}} <br>
+    Artist : {{ticketDetail.infosEvent.artist}} <br>
+    Place left : {{ticketDetail.infosEvent.available_seats}} <br>
+    Date event : {{ticketDetail.infosEvent.date_event}} <br>
+    VOD link : {{ticketDetail.infosEvent.vod_link}} <br>
+
+    <h2>Ticket infos</h2>
+    Ticket ID : {{ticketDetail.ticket._id}} <br>
+    Type : {{ticketDetail.ticket.type}} <br>
+  </div>
+
+</section>
+
+
+

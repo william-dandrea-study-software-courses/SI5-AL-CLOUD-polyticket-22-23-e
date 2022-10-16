@@ -3,6 +3,7 @@ import { RouterModule, Routes } from '@angular/router';
 import {TicketsListComponent} from "./feature/tickets/tickets-list/tickets-list.component";
 import {VideoManagerComponent} from "./feature/video-manager/video-manager.component";
 import {UploadVideoComponent} from "./feature/upload-video/upload-video.component";
+import {TicketDetailComponent} from "./feature/tickets/ticket-detail/ticket-detail.component";
 
 const routes: Routes = [
   {
@@ -16,6 +17,10 @@ const routes: Routes = [
   {
     path: "upload-video",
     component: UploadVideoComponent,
+  },
+  {
+    path: "ticket-detail",
+    component: TicketDetailComponent,
   },
 ];
 
