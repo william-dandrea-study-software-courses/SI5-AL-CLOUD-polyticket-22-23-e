@@ -38,6 +38,10 @@ export class AppBarComponent implements OnInit {
     this.router.navigate(["upload-video"])
   }
 
+  public goToEventManager() {
+    this.router.navigate(["event-manager"])
+  }
+
   payTicket(id_cart: string) {
     console.log(id_cart)
     this.cartService.payCartItem(id_cart).subscribe(v => {

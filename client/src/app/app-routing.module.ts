@@ -4,6 +4,7 @@ import {TicketsListComponent} from "./feature/tickets/tickets-list/tickets-list.
 import {VideoManagerComponent} from "./feature/video-manager/video-manager.component";
 import {UploadVideoComponent} from "./feature/upload-video/upload-video.component";
 import {TicketDetailComponent} from "./feature/tickets/ticket-detail/ticket-detail.component";
+import {EventManagerComponent} from "./feature/event/event-manager/event-manager.component";
 
 const routes: Routes = [
   {
@@ -22,6 +23,11 @@ const routes: Routes = [
     path: "ticket-detail",
     component: TicketDetailComponent,
   },
+  {
+    path: "event-manager",
+    component: EventManagerComponent,
+  },
+
 ];
 
 @NgModule({

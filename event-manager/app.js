@@ -62,12 +62,12 @@ app.post('/new-event', async (req, res, next) => {
 
     const result = await client.query(query).then(async payload => {
       return await client
-          .query(`SELECT * FROM events`)
+          .query(`SELECT * FROM events WHERE artist=${artistBody}, available_seats=${availableSeatsBody}, email_owner={creatorEmailBody}, name_event={nameBody}`)
           .then((payload2) => {
             return payload2.rows;
-          }).catch(error => res.status(400).json({"error": error.detail}))
+          }).catch(error => res.status(400).json({status: error.detail}))
     }).catch(error => {
-      res.status(400).json({"error": error.detail})
+      res.status(400).json({status: error.detail})
     })
 
     if (result) {
@@ -75,7 +75,7 @@ app.post('/new-event', async (req, res, next) => {
     }
 
   } else {
-    res.json({status: "400", message: "Error when paring the request body"}).status(400)
+    res.json({status: "Error when paring the request body"}).status(400)
   }
 });
 

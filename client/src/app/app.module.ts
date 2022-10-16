@@ -27,6 +27,9 @@ import {MatFormFieldModule} from "@angular/material/form-field";
 import {ReactiveFormsModule} from "@angular/forms";
 import {MatInputModule} from "@angular/material/input";
 import {MatProgressSpinnerModule} from "@angular/material/progress-spinner";
+import { EventManagerComponent } from './feature/event/event-manager/event-manager.component';
+import {MatDatepickerModule} from "@angular/material/datepicker";
+import {MatNativeDateModule} from "@angular/material/core";
 
 @NgModule({
   declarations: [
@@ -38,7 +41,8 @@ import {MatProgressSpinnerModule} from "@angular/material/progress-spinner";
     UploadVideoComponent,
     DialogWithOkButtonComponent,
     DialogNewTicketInCartComponent,
-    TicketDetailComponent
+    TicketDetailComponent,
+    EventManagerComponent
   ],
   imports: [
     BrowserModule,
@@ -59,6 +63,8 @@ import {MatProgressSpinnerModule} from "@angular/material/progress-spinner";
     ReactiveFormsModule,
     MatInputModule,
     MatProgressSpinnerModule,
+    MatDatepickerModule,
+    MatNativeDateModule,
   ],
   providers: [],
   bootstrap: [AppComponent]
