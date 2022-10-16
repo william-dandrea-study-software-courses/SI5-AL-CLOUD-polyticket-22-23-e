@@ -30,6 +30,7 @@ import {MatProgressSpinnerModule} from "@angular/material/progress-spinner";
 import { EventManagerComponent } from './feature/event/event-manager/event-manager.component';
 import {MatDatepickerModule} from "@angular/material/datepicker";
 import {MatNativeDateModule} from "@angular/material/core";
+import { DialogForNewEventComponent } from './shared/components/dialog/dialog-for-new-event/dialog-for-new-event.component';
 
 @NgModule({
   declarations: [
@@ -42,7 +43,8 @@ import {MatNativeDateModule} from "@angular/material/core";
     DialogWithOkButtonComponent,
     DialogNewTicketInCartComponent,
     TicketDetailComponent,
-    EventManagerComponent
+    EventManagerComponent,
+    DialogForNewEventComponent
   ],
   imports: [
     BrowserModule,
