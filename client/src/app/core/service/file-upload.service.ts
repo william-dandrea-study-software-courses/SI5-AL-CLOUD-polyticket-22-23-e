@@ -9,8 +9,8 @@ export class FileUploadService {
 
   constructor(private http: HttpClient) { }
 
-  postFile(fileToUpload: File): Observable<any> {
-    const endpoint = 'http://localhost:4560/upload';
+  postFile(fileToUpload: File, idEvent: string): Observable<any> {
+    const endpoint = `https://vod-gate-idnoihwhaq-uc.a.run.app/upload/${idEvent}`;
     const formData: FormData = new FormData();
     formData.append('file', fileToUpload, fileToUpload.name);
     return this.http.post(endpoint, formData)

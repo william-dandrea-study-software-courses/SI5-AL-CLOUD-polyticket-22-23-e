@@ -1,6 +1,5 @@
 
 
-
 export interface TicketModel {
   buy_date: string
   event_id: number

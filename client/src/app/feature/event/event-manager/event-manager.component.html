@@ -62,5 +62,18 @@
     <button mat-raised-button color="primary" class="full-width" (click)="searchTicketWithId()" [disabled]="editEventIdForm.invalid">Search</button>
   </form>
 
+  <div *ngIf="eventToBeModified">
+    ID : {{eventToBeModified.id_event}}<br>
+    DATE : {{eventToBeModified.date_event}}<br>
+    Seats : {{eventToBeModified.available_seats}}<br>
+    Artist : {{eventToBeModified.artist}}<br>
+    Email : {{eventToBeModified.email_owner}}<br>
+    Name : {{eventToBeModified.name_event}}<br>
+    Vod Link : {{eventToBeModified.vod_link}}<br>
+
+    <app-upload-video [idEvent]="eventToBeModified.id_event"></app-upload-video>
+
+  </div>
+
 
 </section>

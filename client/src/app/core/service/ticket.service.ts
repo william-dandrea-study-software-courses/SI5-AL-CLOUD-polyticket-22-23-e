@@ -1,5 +1,5 @@
 import { Injectable } from '@angular/core';
-import {firstValueFrom, Observable} from "rxjs";
+import {BehaviorSubject, firstValueFrom, Observable} from "rxjs";
 import {HttpClient, HttpHeaders} from "@angular/common/http";
 import {TicketModel} from "../models/ticket.model";
 import {ErrorModel} from "../models/error.model";
@@ -10,6 +10,8 @@ import {TicketDetailModel} from "../models/ticket-detail.model";
   providedIn: 'root'
 })
 export class TicketService {
+
+
 
   public optionRequete = {
     headers: new HttpHeaders({

@@ -31,16 +31,21 @@ export class EventManagerComponent implements OnInit {
     creator_email: ["", [Validators.required, Validators.email]],
   });
 
+
+  public eventToBeModified: EventModel | null = null;
+
   constructor(private formBuilder: FormBuilder, private eventService: EventService,  public dialog: MatDialog, private snackBar: MatSnackBar,) { }
 
-  ngOnInit(): void {}
+  ngOnInit(): void {
+    this.eventService.currentEditEvent$.subscribe(eventToBeModified =>{
+      this.eventToBeModified = eventToBeModified;
+    })
+  }
 
 
   public searchTicketWithId() {
     console.log(this.editEventIdForm.value)
-
-
-
+    this.eventService.getOneEvent(this.editEventIdForm.value.id_event)
   }
 
   public addEvent() {
@@ -50,8 +55,6 @@ export class EventManagerComponent implements OnInit {
       const error: ErrorModel | null = isErrorModelInstance(v);
       const event: EventModel | null = isEventModelInstance(v);
 
-
-      console.log(v)
       if (event) {
         let dialogRef = this.dialog.open(DialogForNewEventComponent);
         dialogRef.componentInstance.id_event = String(event.id_event);
