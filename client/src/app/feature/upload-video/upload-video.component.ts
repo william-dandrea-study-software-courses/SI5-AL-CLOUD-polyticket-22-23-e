@@ -16,6 +16,8 @@ export class UploadVideoComponent implements OnInit {
 
   @Input() public idEvent: number | null = null;
 
+  public isLoading: boolean = false;
+
   constructor(private http: HttpClient, private fileUploadService: FileUploadService, private snackBar: MatSnackBar, private eventService: EventService) {}
 
   handleFileInput(event: any) {
@@ -29,14 +31,18 @@ export class UploadVideoComponent implements OnInit {
 
   uploadFileToActivity() {
     if (this.fileToUpload != null && this.idEvent != null ) {
+      this.isLoading = true;
       this.fileUploadService.postFile(this.fileToUpload, String(this.idEvent)).subscribe(data => {
         // do something, if upload success
         console.log(data)
         this.snackBar.open("Video upload with success")
-        this.eventService.getOneEvent(String(this.idEvent));
+        this.eventService.getOneEvent(String(this.idEvent)).then(v => {
+          this.isLoading = false;
+        });
       }, error => {
         this.snackBar.open("Error occur when uploading video")
         console.log(error);
+        this.isLoading = false;
       });
     } else {
       this.snackBar.open("Please enter a video file")

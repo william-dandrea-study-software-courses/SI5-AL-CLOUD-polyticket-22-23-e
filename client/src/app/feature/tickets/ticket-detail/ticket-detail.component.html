@@ -6,7 +6,7 @@
   <form [formGroup]="form">
     <div >
       <mat-form-field appearance="fill">
-        <mat-label>Id event</mat-label>
+        <mat-label>Id ticket</mat-label>
         <input type="text" matInput formControlName="id_event">
       </mat-form-field>
     </div>
@@ -31,6 +31,11 @@
     <h2>Ticket infos</h2>
     Ticket ID : {{ticketDetail.ticket._id}} <br>
     Type : {{ticketDetail.ticket.type}} <br>
+
+
+    <app-video-manager *ngIf="ticketDetail.infosEvent.vod_link != null" [currentVideo]="ticketDetail.infosEvent.vod_link"></app-video-manager>
+
+
   </div>
 
 </section>

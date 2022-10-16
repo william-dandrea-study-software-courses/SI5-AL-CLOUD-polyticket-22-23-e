@@ -15,13 +15,7 @@
       <vg-volume></vg-volume>
       <vg-fullscreen></vg-fullscreen>
     </vg-controls>
-    <video #media [vgMedia]="$any(media)" [src]="currentVideo.src" id="singleVideo" preload="auto" crossorigin>
+    <video #media [vgMedia]="$any(media)" [src]="currentVideo" id="singleVideo" preload="auto" crossorigin>
     </video>
   </vg-player>
-  <ul class="player-list">
-    <li *ngFor="let vdo of videoItems; let $index = index"
-        (click)="startPlaylistVdo(vdo, $index)" [class.selected]="vdo === currentVideo">
-      {{ vdo.name }}
-    </li>
-  </ul>
 </div>
