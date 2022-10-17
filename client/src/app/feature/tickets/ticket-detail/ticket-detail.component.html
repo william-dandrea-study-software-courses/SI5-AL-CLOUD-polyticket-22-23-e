@@ -1,7 +1,7 @@
 
 <section style="margin: 50px">
 
-  634c3594fa69040a32e7d9a5
+  634d815ac10d8418e86c14ec
 
   <form [formGroup]="form">
     <div >
@@ -19,7 +19,9 @@
 
   <mat-spinner *ngIf="isLoading"></mat-spinner>
 
-  <div *ngIf="ticketDetail">
+
+
+  <div *ngIf="ticketDetail != null">
 
     <h2>Event infos</h2>
     Event ID : {{ticketDetail.infosEvent.id_event}} <br>
@@ -28,13 +30,12 @@
     Date event : {{ticketDetail.infosEvent.date_event}} <br>
     VOD link : {{ticketDetail.infosEvent.vod_link}} <br>
 
-    <h2>Ticket infos</h2>
+    <h2>Ticket infos</h2>a
     Ticket ID : {{ticketDetail.ticket._id}} <br>
     Type : {{ticketDetail.ticket.type}} <br>
 
 
-    <app-video-manager *ngIf="ticketDetail.infosEvent.vod_link != null" [currentVideo]="ticketDetail.infosEvent.vod_link"></app-video-manager>
-
+    <iframe allowfullscreen="" frameborder="0" height="315" [src]="videoVodLink()" width="560"></iframe>
 
   </div>
 

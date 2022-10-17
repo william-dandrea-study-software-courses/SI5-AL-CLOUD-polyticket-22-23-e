@@ -23,7 +23,7 @@ const SQLClientConfig = {
 const multer = Multer({
   storage: Multer.MemoryStorage,
   limits: {
-    fileSize: 100 * 1024 * 1024, // Maximum file size is 10MB
+    fileSize: 200 * 1024 * 1024, // Maximum file size is 10MB
   },
 });
 

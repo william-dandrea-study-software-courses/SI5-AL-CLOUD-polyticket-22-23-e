@@ -31,21 +31,23 @@ import { EventManagerComponent } from './feature/event/event-manager/event-manag
 import {MatDatepickerModule} from "@angular/material/datepicker";
 import {MatNativeDateModule} from "@angular/material/core";
 import { DialogForNewEventComponent } from './shared/components/dialog/dialog-for-new-event/dialog-for-new-event.component';
+import {SafePipe} from "./shared/pipe/safe.pipe";
 
 @NgModule({
-  declarations: [
-    AppComponent,
-    AppBarComponent,
-    TicketsListComponent,
-    TicketCardComponent,
-    VideoManagerComponent,
-    UploadVideoComponent,
-    DialogWithOkButtonComponent,
-    DialogNewTicketInCartComponent,
-    TicketDetailComponent,
-    EventManagerComponent,
-    DialogForNewEventComponent
-  ],
+    declarations: [
+        AppComponent,
+        AppBarComponent,
+        TicketsListComponent,
+        TicketCardComponent,
+        VideoManagerComponent,
+        UploadVideoComponent,
+        DialogWithOkButtonComponent,
+        DialogNewTicketInCartComponent,
+        TicketDetailComponent,
+        EventManagerComponent,
+        DialogForNewEventComponent,
+        SafePipe
+    ],
   imports: [
     BrowserModule,
     HttpClientModule,

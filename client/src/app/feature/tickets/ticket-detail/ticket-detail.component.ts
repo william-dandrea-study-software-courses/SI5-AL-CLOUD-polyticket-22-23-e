@@ -4,6 +4,7 @@ import {TicketService} from "../../../core/service/ticket.service";
 import {isTicketDetailModelInstance, TicketDetailModel} from "../../../core/models/ticket-detail.model";
 import {ErrorModel, isErrorModelInstance} from "../../../core/models/error.model";
 import {MatSnackBar} from "@angular/material/snack-bar";
+import {DomSanitizer} from "@angular/platform-browser";
 
 @Component({
   selector: 'app-ticket-detail',
@@ -20,7 +21,8 @@ export class TicketDetailComponent implements OnInit {
   public ticketDetail: TicketDetailModel | null = null;
   public errorMessage: ErrorModel | null = null;
 
-  constructor(private formBuilder: FormBuilder, private ticketService: TicketService, private snackBar: MatSnackBar) {
+
+  constructor(private formBuilder: FormBuilder, private ticketService: TicketService, private snackBar: MatSnackBar, private sanitizer: DomSanitizer) {
   }
 
   ngOnInit(): void {
@@ -35,6 +37,8 @@ export class TicketDetailComponent implements OnInit {
       this.ticketDetail = isTicketDetailModelInstance(v)
       this.errorMessage = isErrorModelInstance(v);
 
+      console.log(this.ticketDetail?.infosEvent.vod_link)
+
       if (this.errorMessage != null) {
         this.snackBar.open(this.errorMessage.status)
       }
@@ -46,4 +50,15 @@ export class TicketDetailComponent implements OnInit {
     });
   }
 
+  public videoVodLink() {
+    if (this.ticketDetail) {
+      if (this.ticketDetail.infosEvent.vod_link) {
+        return this.sanitizer.bypassSecurityTrustResourceUrl(this.ticketDetail.infosEvent.vod_link);
+      }
+    }
+    return '';
+  }
+
+
 }
+
