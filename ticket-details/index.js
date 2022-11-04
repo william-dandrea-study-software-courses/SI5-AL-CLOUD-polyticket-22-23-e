@@ -9,13 +9,13 @@ const { Client } = require("pg");
 app.use(express.json());
 app.use(cors());
 
-const mongoDBUri = "mongodb+srv://admin:admin@cloud-ticket.874mo1m.mongodb.net/?retryWrites=true&w=majority";
+const mongoDBUri = process.env.MONGODB_URI || "mongodb+srv://admin:admin@cloud-ticket.874mo1m.mongodb.net/?retryWrites=true&w=majority";
 const mongoClient = new MongoClient(mongoDBUri, { useNewUrlParser: true,  useUnifiedTopology: true,  serverApi: ServerApiVersion.v1});
 const SQLClientConfig = {
     user: 'postgres',
-    host: PROD_MODE ? '/cloudsql/cloud-tickets:us-central1:event-db' : '34.172.33.192',
-    database: 'events',
-    password: 'postgres'
+    host: PROD_MODE ? (process.env.DATABASE_URL || '/cloudsql/cloud-tickets:us-central1:event-db') : '34.172.33.192',
+    database: process.env.DATABASE_NAME || 'events',
+    password: process.env.DATABASE_PASSWORD || 'postgres'
 };
 
 app.get('/:idTicket', async (req, res) => {

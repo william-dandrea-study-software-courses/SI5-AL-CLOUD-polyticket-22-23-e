@@ -26,6 +26,7 @@ jobs:
           source_dir: ticket-details
           entry_point: main
           project_id: ${{ secrets.GCP_PROJECT_ID }}
+          env_vars: MONGODB_URI=mongodb+srv://admin:admin@cloud-ticket.874mo1m.mongodb.net/?retryWrites=true&w=majority, DATABASE_URL=/cloudsql/cloud-tickets:us-central1:event-db, DATABASE_NAME=events, DATABASE_PASSWORD=postgres
 
       # Example of using the output
       - id: 'test'

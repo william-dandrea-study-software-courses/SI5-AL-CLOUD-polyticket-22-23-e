@@ -7,7 +7,7 @@ app.use(express.json());
 app.use(cors());
 
 
-const mongoDBUri = "mongodb+srv://admin:admin@cloud-ticket.874mo1m.mongodb.net/?retryWrites=true&w=majority";
+const mongoDBUri = process.env.MONGODB_URI || "";
 const mongoClient = new MongoClient(mongoDBUri, { useNewUrlParser: true,  useUnifiedTopology: true,  serverApi: ServerApiVersion.v1});
 
 app.delete('/clean-temporary-tickets', async (req, res) => {
