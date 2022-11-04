@@ -26,6 +26,7 @@ jobs:
           source_dir: event-listing
           entry_point: main
           project_id: ${{ secrets.GCP_PROJECT_ID }}
+          env_vars: DATABASE_URL=/cloudsql/cloud-tickets:us-central1:event-db,DATABASE_NAME=events,DATABASE_PASSWORD=postgres
 
       # Example of using the output
       - id: 'test'

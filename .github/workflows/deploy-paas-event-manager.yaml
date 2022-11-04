@@ -1,7 +1,7 @@
-name: Deploy event-listing Cloud Function
+name: Deploy event-manager via Cloud Run
 on:
   push:
-    branches: [ main ]
+    branches: [ developp ]
 
 jobs:
   job_id:
@@ -22,15 +22,8 @@ jobs:
         uses: 'google-github-actions/deploy-cloudrun@v0'
         with:
           service: 'event-manager'
-          name: 'event-manager'
-          source: event-manager
-          env_vars: |
-            EVENT_DB_HOST=host
           project_id: ${{ secrets.GCP_PROJECT_ID }}
 
       # Example of using the output
       - id: 'test'
         run: 'curl "${{ steps.deploy.outputs.url }}"'
-
-
-

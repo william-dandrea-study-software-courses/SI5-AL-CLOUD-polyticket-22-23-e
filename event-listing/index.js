@@ -13,9 +13,9 @@ app.get('/all-events', async (req, res) => {
 
         const pgConfig = {
             user: 'postgres',
-            host: '/cloudsql/cloud-tickets:us-central1:event-db',
-            database: 'events',
-            password: 'postgres'
+            host: process.env.DATABASE_URL || '',
+            database: process.env.DATABASE_NAME || '',
+            password: process.env.DATABASE_PASSWORD || ''
         };
 
         const pgPool = new pg.Pool(pgConfig);
