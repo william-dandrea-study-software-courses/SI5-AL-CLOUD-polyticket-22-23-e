@@ -21,7 +21,7 @@ jobs:
       - id: 'deploy'
         uses: 'google-github-actions/deploy-cloudrun@v0'
         with:
-          service: ''
+          service: 'event-manager'
           name: 'event-manager'
           source: event-manager
           env_vars: |
