@@ -10,12 +10,14 @@ import {TicketModel} from "../models/ticket.model";
 })
 export class EventService {
 
+  private URL_SERVICE = "https://event-manager-idnoihwhaq-uc.a.run.app"
+
   public currentEditEvent$: BehaviorSubject<EventModel | null> = new BehaviorSubject<EventModel | null>(null)
 
   constructor(private http: HttpClient) { }
 
   public addEvent(nameInput: string, availableSeatsInput: number, dateInput: Date, artistInput: string, creatorEmailInput: string ): Observable<EventModel | ErrorModel> {
-    return this.http.post<EventModel | ErrorModel>(`https://event-manager-idnoihwhaq-uc.a.run.app/new-event`, {
+    return this.http.post<EventModel | ErrorModel>(`${this.URL_SERVICE}/new-event`, {
       name: nameInput,
       available_seats: availableSeatsInput,
       date: dateInput.toISOString(),
@@ -26,7 +28,7 @@ export class EventService {
 
   public getOneEvent(eventId: string): Promise<EventModel> {
     return new Promise((resolve, reject) => {
-      this.http.get<EventModel>(`https://event-manager-idnoihwhaq-uc.a.run.app//event/${eventId}`).subscribe(v => {
+      this.http.get<EventModel>(`${this.URL_SERVICE}/event/${eventId}`).subscribe(v => {
         this.currentEditEvent$.next(v);
         resolve(v)
       }, error => reject(error))

@@ -8,12 +8,14 @@ import {EventModel} from "../models/event.model";
 })
 export class EventListingService {
 
+  private URL_SERVICE = "https://us-central1-cloud-tickets.cloudfunctions.net/event-listing"
+
 
   constructor(private http: HttpClient) {}
 
 
   public getAllTickets(): Observable<EventModel[]> {
-    return this.http.get<EventModel[]>(`https://us-central1-cloud-tickets.cloudfunctions.net/event-listing/all-events`);
+    return this.http.get<EventModel[]>(`${this.URL_SERVICE}/all-events`);
   }
 
 

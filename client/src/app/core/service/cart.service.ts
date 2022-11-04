@@ -10,6 +10,8 @@ import {ErrorModel} from "../models/error.model";
 })
 export class CartService {
 
+  private URL_SERVICE = "https://ticket-booking-idnoihwhaq-uc.a.run.app"
+
   private cart: CartModel[] = [];
   public cart$: BehaviorSubject<CartModel[]> = new BehaviorSubject<CartModel[]>(this.cart)
 
@@ -27,6 +29,6 @@ export class CartService {
 
 
   public payCartItem(cartId: string): Observable<TicketModel | ErrorModel> {
-    return this.http.get<TicketModel | ErrorModel>(`https://ticket-booking-idnoihwhaq-uc.a.run.app/${cartId}/pay`);
+    return this.http.get<TicketModel | ErrorModel>(`${this.URL_SERVICE}/${cartId}/pay`);
   }
 }

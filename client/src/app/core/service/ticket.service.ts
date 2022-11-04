@@ -11,7 +11,8 @@ import {TicketDetailModel} from "../models/ticket-detail.model";
 })
 export class TicketService {
 
-
+  private TICKET_BOOKING_SERVICE = "https://ticket-booking-idnoihwhaq-uc.a.run.app"
+  private TICKET_DETAILS_SERVICE = "https://us-central1-cloud-tickets.cloudfunctions.net"
 
   public optionRequete = {
     headers: new HttpHeaders({
@@ -23,16 +24,16 @@ export class TicketService {
 
 
   public buyNewEticket(eventId: number): Observable<TicketModel | ErrorModel> {
-    return this.http.get<TicketModel | ErrorModel>(`https://ticket-booking-idnoihwhaq-uc.a.run.app/create-eticket/${eventId}`, this.optionRequete)
+    return this.http.get<TicketModel | ErrorModel>(`${this.TICKET_BOOKING_SERVICE}/create-eticket/${eventId}`, this.optionRequete)
   }
 
   public buyNewTicket(eventId: number): Observable<CartModel | ErrorModel> {
-    return this.http.get<CartModel | ErrorModel>(`https://ticket-booking-idnoihwhaq-uc.a.run.app/create-ticket/${eventId}`, this.optionRequete)
+    return this.http.get<CartModel | ErrorModel>(`${this.TICKET_BOOKING_SERVICE}/create-ticket/${eventId}`, this.optionRequete)
   }
 
 
   public detailsAboutTicket(ticketId: string): Observable<ErrorModel | TicketDetailModel> {
-    return this.http.get<ErrorModel | TicketDetailModel>(`https://us-central1-cloud-tickets.cloudfunctions.net/ticket-details/${ticketId}`, this.optionRequete);
+    return this.http.get<ErrorModel | TicketDetailModel>(`${this.TICKET_DETAILS_SERVICE}/ticket-details/${ticketId}`, this.optionRequete);
   }
 
 
