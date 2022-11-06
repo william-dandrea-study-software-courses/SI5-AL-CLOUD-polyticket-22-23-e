@@ -4,7 +4,7 @@ Dans ce projet, nous avons 3 FaaS (event-listing, ticket-cart-checker, ticket-de
 
 Afin de facilier le déploiement, nous avons mis en place une chaîne de déploiement
 continu en place, afin que à chaque nouveau push sur la branche main du repository
-du projet, tout les micro-services se deploient automatiquement.
+du projet, tout les micro-services se déploient automatiquement.
 
 SI vous souhaitez utiliser ce projet et le déployer vous même, il y a quelques étapes 
 préliminaires. 
@@ -13,10 +13,10 @@ credentials dans les différents micro-services et fichier d'environnement. Vous
 de même en créant une base de donnée postgreSQL
 
 Une fois ceci fait, vous avez juste à deployer le code sur votre propre projet GCP, 
-vous devrez cependant vous assurer que dans les fichiers du doccier .github/workflow
+vous devrez cependant vous assurer que dans les fichiers du dossier .github/workflow
 que vous avez le bon nom de projet.
 
-Dans le github, vous devrez aussi insérer vos crédentials dans les variables secrêtes GCP_SA_KEY
+Dans le github, vous devrez aussi insérer vos crédentials dans les variables secretes GCP_SA_KEY
 GCP_PROJECT_ID.
 
 Pour le micro-services vod-gate, qui gère le système de VOD, vous devrez générer un JSON 
@@ -27,7 +27,11 @@ GCP dans la partie cloud build et configurer les déploiements. Vous aurez à co
 github à GCP et à créer un trigger pour les services event-manager, ticket-booking, vod-gate.
 Afin de vous aider, nous avons mis dans chacun de ces services (à la racine), un fichier 
 .gcloud_configuration.yaml qui contient le contenu de ce trigger si vous voulez trigger 
-par un fichier cloudbuild.yaml
+par un fichier cloudbuild.yaml.
+
+Vous devrez également créer un CRON (par GCP Schedule) qui ira appeler l'unique route 
+de ticket-cart-checker, et le réglr sur la fréquence de nettoyage du panier. Il est recommandé
+de faire un appel à cette route toutes les 5 minutes.
 
 Enfin, et si vous souhaiter utiliser le front-end (non-nécessaire), vous devrez juste aller
 consulter les différents services angular afin de modifier les URL d'accès aux microservices
